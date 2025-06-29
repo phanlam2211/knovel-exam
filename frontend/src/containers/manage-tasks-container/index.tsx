@@ -17,7 +17,7 @@ export const ManageTasksContainer = () => {
 
   return (
     <AppLayout>
-      <Spin spinning={loading} />
+      <Spin spinning={loading}>
       <ManageTasksContainerWrapper>
         <Row gutter={[16, 16]}>
           <Col span={24}>
@@ -41,6 +41,7 @@ export const ManageTasksContainer = () => {
         </Row>
         <TaskModal />
       </ManageTasksContainerWrapper>
+      </Spin>
     </AppLayout>
   );
 };
