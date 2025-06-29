@@ -16,6 +16,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 
 @Entity('users')
+@Index(['roleId']) // Index for role-based filtering (important for getEmployeeTaskSummary)
 export class User extends EntityHelper {
   @PrimaryGeneratedColumn()
   id: number;

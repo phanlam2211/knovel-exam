@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -14,6 +15,9 @@ import { Status } from '../../statuses/entities/status.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('tasks')
+@Index(['assigneeId'])
+@Index(['assigneeId', 'statusId'])
+@Index(['statusId'])
 export class Task extends EntityHelper {
   @ApiProperty()
   @PrimaryGeneratedColumn()
@@ -51,10 +55,16 @@ export class Task extends EntityHelper {
   dueDate: Date | null;
 
   @ApiProperty()
+  @Column()
   assigneeId?: number;
 
   @ApiProperty()
+  @Column()
   statusId?: number;
+
+  @ApiProperty()
+  @Column()
+  createdById?: number;
 
   @AfterLoad()
   setVirtualProperties() {
@@ -63,6 +73,9 @@ export class Task extends EntityHelper {
     }
     if (this.status) {
       this.statusId = this.status.id;
+    }
+    if (this.createdBy) {
+      this.createdById = this.createdBy.id;
     }
   }
 
