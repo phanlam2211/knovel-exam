@@ -15,9 +15,7 @@ import { Status } from '../../statuses/entities/status.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('tasks')
-@Index(['assigneeId'])
 @Index(['assigneeId', 'statusId'])
-@Index(['statusId'])
 export class Task extends EntityHelper {
   @ApiProperty()
   @PrimaryGeneratedColumn()

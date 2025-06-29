@@ -11,19 +11,7 @@ export class AddIndexing1751202516354 implements MigrationInterface {
     );
 
     await queryRunner.query(
-      `CREATE INDEX IF NOT EXISTS "IDX_tasks_assigneeId" ON "tasks" ("assigneeId")`,
-    );
-
-    await queryRunner.query(
       `CREATE INDEX IF NOT EXISTS "IDX_tasks_assigneeId_statusId" ON "tasks" ("assigneeId", "statusId")`,
-    );
-
-    await queryRunner.query(
-      `CREATE INDEX IF NOT EXISTS "IDX_tasks_statusId" ON "tasks" ("statusId")`,
-    );
-
-    await queryRunner.query(
-      `CREATE INDEX IF NOT EXISTS "IDX_tasks_createdById" ON "tasks" ("createdById")`,
     );
 
     await queryRunner.query(
@@ -33,13 +21,9 @@ export class AddIndexing1751202516354 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`DROP INDEX IF EXISTS "IDX_users_email"`);
-    await queryRunner.query(`DROP INDEX IF EXISTS "IDX_tasks_createdById"`);
-    await queryRunner.query(`DROP INDEX IF EXISTS "IDX_tasks_createdAt"`);
-    await queryRunner.query(`DROP INDEX IF EXISTS "IDX_tasks_statusId"`);
     await queryRunner.query(
       `DROP INDEX IF EXISTS "IDX_tasks_assigneeId_statusId"`,
     );
-    await queryRunner.query(`DROP INDEX IF EXISTS "IDX_tasks_assigneeId"`);
     await queryRunner.query(`DROP INDEX IF EXISTS "IDX_users_roleId"`);
   }
 }
