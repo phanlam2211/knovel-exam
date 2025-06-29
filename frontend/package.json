@@ -1,0 +1,53 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "gen": "cd ./src/swagger-api && swagger-typescript-api generate -p ./swagger.json -o ./gen --templates ./templates --custom-config ./config.js --axios --union-enums --modular --single-http-client --clean-output --module-name-first-tag",
+    "gen:remote": "curl -o ./src/swagger-api/swagger.json http://localhost:3000/swagger.json && yarn gen"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "@dhmk/zustand-lens": "^4.0.0",
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^5.1.1",
+    "@react-hookz/web": "^24.0.4",
+    "antd": "^5.26.2",
+    "axios": "^1.10.0",
+    "lodash": "^4.17.21",
+    "qs": "^6.14.0",
+    "querystring": "^0.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.58.1",
+    "react-router-dom": "^7.6.2",
+    "styled-components": "^6.1.19",
+    "yup": "^1.6.1",
+    "zustand": "4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/lodash": "^4.17.19",
+    "@types/qs": "^6.14.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.5.2",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.2.0",
+    "immer": "10.0.4",
+    "prettier": "^3.6.2",
+    "swagger-typescript-api": "^13.2.7",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.34.1",
+    "vite": "^7.0.0"
+  }
+}
